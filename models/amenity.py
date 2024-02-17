@@ -1,13 +1,11 @@
 #!/usr/bin/python3
-"""Defines the Amenity class."""
-from models.base_model import BaseModel
+""" State Module for HBNB project """
+from models.base_model import BaseModel, Base
+from sqlalchemy import Column, String
 
 
-class Amenity(BaseModel):
-    """Represent an amenity.
+class Amenity(BaseModel, Base):
+    '''The class for Amenity'''
+    __tablename__ = 'amenities'
 
-    Attributes:
-        name (str): The name of the amenity.
-    """
-
-    name = ""
+    name = Column(String(128), nullable=False)
