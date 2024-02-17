@@ -9,7 +9,7 @@ execute: fab -f 3-deploy_web_static.py deploy -i ~/.ssh/id_rsa -u ubuntu
 from fabric.api import env, local, put, run
 from datetime import datetime
 from os.path import exists, isdir
-env.hosts = ['54.160.77.90', '10.25.190.21']
+env.hosts = ['54.236.43.216', '34.202.159.19']
 
 
 def do_pack():
@@ -19,7 +19,7 @@ def do_pack():
         if isdir("versions") is False:
             local("mkdir versions")
         file_name = "versions/web_static_{}.tgz".format(date)
-        local("tar -cvzf {} web_static".format(file_name))
+        local("sudo tar -cvzf {} web_static".format(file_name))
         return file_name
     except:
         return None
