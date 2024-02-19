@@ -19,9 +19,7 @@ classes = {"Amenity": Amenity, "City": City,
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """ display HTML page with list of states """
-    states = storage.all(classes["State"]).values()
-    # ^ fetches States data from storage engine, then in line below,
-    # those states are passed into the template
+    states = sorted(list(storage.all("State").values()), key=lambda x: x.name)
     return render_template('7-states_list.html', states=states)
 
 
